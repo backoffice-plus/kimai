@@ -13,6 +13,12 @@ security:
             id: App\Ldap\LdapUserProvider
 
     firewalls:
+        apiJwtBundle:
+            request_matcher: KimaiPlugin\ApiJwtBundle\Authenticator\AuthorizationHeaderRequestMatcher
+            user_checker: App\Security\UserChecker
+            custom_authenticators:
+                - KimaiPlugin\ApiJwtBundle\Authenticator\JwtAuthenticator
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
