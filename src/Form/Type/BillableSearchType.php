@@ -20,9 +20,12 @@ final class BillableSearchType extends AbstractType
         $resolver->setDefaults([
             'label' => 'billable',
             'choices' => [
-                'all' => null,
-                'yes' => true,
-                'no' => false,
+//                'all' => null,
+//                'yes' => true,
+//                'no' => false,
+                'Alle' => null,
+                'Nur Abrechenbar' => true,
+                'Nicht Abrechenbar' => false,
             ],
         ]);
     }

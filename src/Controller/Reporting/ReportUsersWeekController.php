@@ -100,7 +100,7 @@ final class ReportUsersWeekController extends AbstractController
         $hasData = true;
 
         if (!empty($allUsers)) {
-            $dayStats = $statisticService->getDailyStatistics($start, $end, $allUsers);
+            $dayStats = $statisticService->getDailyStatistics($start, $end, $allUsers, $form->getData());
         }
 
         if (empty($dayStats)) {

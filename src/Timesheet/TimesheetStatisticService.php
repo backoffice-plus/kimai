@@ -12,6 +12,7 @@ namespace App\Timesheet;
 use App\Entity\User;
 use App\Model\DailyStatistic;
 use App\Model\MonthlyStatistic;
+use App\Reporting\AbstractUserList;
 use App\Repository\TimesheetRepository;
 use DateTime;
 use DateTimeInterface;
@@ -28,7 +29,7 @@ final class TimesheetStatisticService
      * @param User[] $users
      * @return DailyStatistic[]
      */
-    public function getDailyStatistics(DateTimeInterface $begin, DateTimeInterface $end, array $users): array
+    public function getDailyStatistics(DateTimeInterface $begin, DateTimeInterface $end, array $users, AbstractUserList|null $userList = null): array
     {
         /** @var DailyStatistic[] $stats */
         $stats = [];
@@ -70,6 +71,10 @@ final class TimesheetStatisticService
 
             if ($day === null) {
                 // timezone differences
+                continue;
+            }
+
+            if ($userList && ($userList->billable && !$row['billable']) || ('' === $userList->billable && $row['billable'])) {
                 continue;
             }
 

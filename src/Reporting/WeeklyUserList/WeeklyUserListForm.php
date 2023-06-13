@@ -9,6 +9,7 @@
 
 namespace App\Reporting\WeeklyUserList;
 
+use App\Form\Type\BillableSearchType;
 use App\Form\Type\ReportSumType;
 use App\Form\Type\TeamType;
 use App\Form\Type\WeekPickerType;
@@ -34,6 +35,7 @@ final class WeeklyUserListForm extends AbstractType
             'width' => false,
         ]);
         $builder->add('sumType', ReportSumType::class);
+        $builder->add('billable', BillableSearchType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -9,6 +9,7 @@
 
 namespace App\Reporting\MonthlyUserList;
 
+use App\Form\Type\BillableSearchType;
 use App\Form\Type\MonthPickerType;
 use App\Form\Type\ReportSumType;
 use App\Form\Type\TeamType;
@@ -34,6 +35,7 @@ final class MonthlyUserListForm extends AbstractType
             'width' => false,
         ]);
         $builder->add('sumType', ReportSumType::class);
+        $builder->add('billable', BillableSearchType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

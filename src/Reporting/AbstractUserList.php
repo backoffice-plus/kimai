@@ -17,6 +17,7 @@ abstract class AbstractUserList
     private bool $decimal = false;
     private string $sumType = 'duration';
     private ?Team $team = null;
+    public ?string $billable = null;
 
     public function getDate(): ?\DateTimeInterface
     {
